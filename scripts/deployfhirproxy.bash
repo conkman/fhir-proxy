@@ -593,7 +593,7 @@ echo "Starting Secure FHIR Proxy App ["$proxyAppName"] deployment..."
 	#stepresult=$(az ad app permission grant --id $spappid --api 00000002-0000-0000-c000-000000000000)
 	
 	echo "Configuring reply urls for app..."
-	stepresult=$(az ad app update --id $spappid --reply-urls $spreplyurls)
+	stepresult=$(az ad app update --id $spappid --web-redirect-uris $spreplyurls)
 	
 	echo "Adding FHIR Custom Roles to Manifest..."
 	stepresult=$(az ad app update --id $spappid --app-roles @${script_dir}/fhirroles.json)
